@@ -1,0 +1,21 @@
+{
+  "name": "citysense-ai",
+  "version": "1.0.0",
+  "description": "CitySense AI — Smart City Exploration & Intelligence Platform",
+  "scripts": {
+    "dev:backend": "cd backend && node server.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "test": "node test_e2e.js",
+    "build": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "smart-city",
+    "leaflet",
+    "osrm",
+    "open-meteo",
+    "citizen-reports",
+    "rag-ai"
+  ],
+  "author": "Antigravity AI",
+  "license": "MIT"
+}

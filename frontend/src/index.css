@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #070b14;
+    --card-bg: rgba(15, 23, 42, 0.75);
+    --border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: #070b14;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Ambient dynamic background */
+.bg-ambient-mesh {
+  background-color: #070b14;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(20, 184, 166, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(168, 85, 247, 0.06) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%);
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+  background: rgba(11, 17, 32, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.88);
+  border-color: rgba(45, 212, 191, 0.4);
+  box-shadow: 0 16px 48px -8px rgba(20, 184, 166, 0.18);
+  transform: translateY(-3px);
+}
+
+/* Shimmer border effect */
+.border-shimmer {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-clip: padding-box;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #070b14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #14b8a6;
+}
+
+/* Radar pulse animation */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px rgba(20, 184, 166, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+  }
+}
+
+.animate-radar {
+  animation: radar-pulse 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Leaflet Container styling */
+.leaflet-container {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+  background-color: #070b14 !important;
+  border-radius: 1.25rem;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(11, 17, 32, 0.94) !important;
+  backdrop-filter: blur(14px) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.7), 0 0 20px rgba(20, 184, 166, 0.15) !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(11, 17, 32, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
+.leaflet-control-zoom a:hover {
+  background-color: #1e293b !important;
+  color: #2dd4bf !important;
+}
+
+/* ======================================================== */
+/* CRITICAL CONTRAST FIX: Selects, Dropdowns, Options & Inputs */
+/* ======================================================== */
+
+/* Force browser/OS native select menus to render with dark color scheme */
+select,
+input,
+textarea {
+  color-scheme: dark !important;
+}
+
+/* Guarantee dark background and crisp bright text on all select options */
+select option,
+select optgroup {
+  background-color: #0b1120 !important;
+  color: #f8fafc !important;
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+select option:checked,
+select option:hover,
+select option:focus {
+  background-color: #0d9488 !important; /* teal-600 */
+  color: #ffffff !important;
+}
+
+select option:disabled {
+  color: #64748b !important; /* slate-500 */
+  background-color: #070b14 !important;
+}
+
+/* Ensure placeholder text has accessible contrast */
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8 !important; /* slate-400 */
+  opacity: 1 !important;
+}
+
+/* Ensure any light background surface has high-contrast dark text */
+.bg-white,
+.bg-slate-50,
+.bg-slate-100,
+.bg-gray-100 {
+  color: #0f172a !important;
+}
+
+.bg-white select option,
+.bg-white select optgroup {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Ensure focus states are clearly visible for keyboard navigation */
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid #14b8a6 !important;
+  outline-offset: 2px !important;
+}
+
+/* High-contrast Leaflet Popup content */
+.leaflet-popup-content {
+  color: #f8fafc !important;
+  margin: 12px 14px !important;
+  line-height: 1.5 !important;
+}
+
+.leaflet-popup-content h3,
+.leaflet-popup-content strong {
+  color: #ffffff !important;
+}
+
+.leaflet-popup-content p {
+  color: #cbd5e1 !important;
+}
+
